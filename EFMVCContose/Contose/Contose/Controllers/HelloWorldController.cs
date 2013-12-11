@@ -15,9 +15,9 @@ namespace Contose.Controllers
             return View();
         }
 
-        public string Welcome(string name, int numTimes = 1)
+        public string Welcome(string name, int id = 1)
         {
-            return HttpUtility.HtmlEncode("你好，" + name + ", NumTimes:" + numTimes);
+            return HttpUtility.HtmlEncode("你好，" + name + ", id:" + id);
         }
 	}
 }
