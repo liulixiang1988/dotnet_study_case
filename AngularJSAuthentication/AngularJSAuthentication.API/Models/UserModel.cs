@@ -17,6 +17,6 @@ namespace AngularJSAuthentication.API.Models
         [DataType(DataType.Password)]
         [Display(Name = "确认密码")]
         [Compare("Password", ErrorMessage = "两次密码输入不一致")]
-        public string ConfirmedPassword { get; set; }
+        public string ConfirmPassword { get; set; }
     }
 }

@@ -10,7 +10,7 @@ using Microsoft.AspNet.Identity;
 
 namespace AngularJSAuthentication.API.Controllers
 {
-    [RoutePrefix("/api/account")]
+    [RoutePrefix("api/Account")]
     public class AccountController : ApiController
     {
         private AuthRepository _repo = null;
@@ -20,7 +20,7 @@ namespace AngularJSAuthentication.API.Controllers
             _repo = new AuthRepository();
         }
 
-        //POST /api/Acount/Register
+        //POST /api/Account/Register
         [AllowAnonymous]
         [Route("Register")]
         public async Task<IHttpActionResult> Register(UserModel userModel)
