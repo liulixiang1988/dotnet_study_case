@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Web.Http;
 using AngularJSAuthentication.API;
+using AngularJSAuthentication.API.Providers;
 using Microsoft.Owin;
+using Microsoft.Owin.Cors;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
 
@@ -14,7 +16,10 @@ namespace AngularJSAuthentication.API
         public void Configuration(IAppBuilder app)
         {
             var config = new HttpConfiguration();
+            ConfigreOAuth(app);
+
             WebApiConfig.Register(config);
+            app.UseCors(CorsOptions.AllowAll);
             app.UseWebApi(config);
         }
 
