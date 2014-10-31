@@ -46,8 +46,17 @@ namespace AspNetMVCEssential.Models
     public class RegisterViewModel
     {
         [Required]
-        [Display(Name = "用户名")]
-        public string UserName { get; set; }
+        [Display(Name = "姓")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [Display(Name = "名")]
+        public string LastName { get; set; }
+
+        [Required]
+        [EmailAddress]
+        [Display(Name = "邮箱")]
+        public string Email { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "{0} 必须至少包含 {2} 个字符。", MinimumLength = 6)]

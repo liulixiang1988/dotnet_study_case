@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Identity.EntityFramework;
+﻿using System.Data.Entity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace AspNetMVCEssential.Models
 {
@@ -13,5 +14,9 @@ namespace AspNetMVCEssential.Models
             : base("DefaultConnection")
         {
         }
+
+        public DbSet<CheckoutAccount> CheckoutAccounts { get; set; }
+
+        public DbSet<Transaction> Transactions { get; set; }
     }
 }

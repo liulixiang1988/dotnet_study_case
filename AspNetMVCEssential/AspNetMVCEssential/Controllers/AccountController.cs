@@ -78,10 +78,21 @@ namespace AspNetMVCEssential.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser() { UserName = model.UserName };
+                var user = new ApplicationUser() { UserName = model.Email, Email = model.Email};
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    var db = new ApplicationDbContext();
+                    var checkoutAccount = new CheckoutAccount
+                    {
+                        AccountNumber = "00000123",
+                        FirstName = model.FirstName,
+                        LastName = model.LastName,
+                        Balance = 0,
+                        ApplicationUserId = user.Id
+                    };
+                    db.CheckoutAccounts.Add(checkoutAccount);
+                    db.SaveChanges();
                     await SignInAsync(user, isPersistent: false);
                     return RedirectToAction("Index", "Home");
                 }
