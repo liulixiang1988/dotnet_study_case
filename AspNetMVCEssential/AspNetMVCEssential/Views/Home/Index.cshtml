@@ -3,9 +3,9 @@
 }
 
 <div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+    <h1>ASP.NET MVC 5</h1>
+    <p class="lead">实验程序</p>
+    <p><a href="http://asp.net" class="btn btn-primary btn-large">了解更多 &raquo;</a></p>
 </div>
 
 <div class="row">
@@ -23,9 +23,35 @@
         <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
         <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
 </div>
+
+@section scripts
+{
+    <script> var testing = true;</script>
+}
+@*注释*@
+
+你在用 @Request.Browser.Browser, 发送邮件给support@qq.com, 转义@@qq
+
+@{
+    var amounts = new List<Decimal> {100, 25.00m, 30.0m, -40}; 
+}
+
+<ul>
+    @foreach (decimal amount in amounts)
+    {
+        <li>@formatAmount(amount)</li>
+        <text>普通文本</text>
+        @:普通文本
+    }
+</ul>
+
+@helper formatAmount(decimal amount)
+{
+    var color = "green";
+    if (amount < 0)
+    {
+        color = "red";
+    }
+    <span style="color:@color">@String.Format("{0:c}", amount)</span>
+}

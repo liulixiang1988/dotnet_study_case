@@ -13,16 +13,25 @@ namespace AspNetMVCEssential.Controllers
             return View();
         }
 
+        [ActionName("about-the-site")]
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
 
-            return View();
+            return View("About");
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.TheMessage = "有问题的话请留言哦~";
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Contact(string message)
+        {
+            ViewBag.TheMessage = "感谢你的留言~";
 
             return View();
         }
