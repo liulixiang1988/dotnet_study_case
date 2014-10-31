@@ -14,6 +14,12 @@ namespace AspNetMVCEssential
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "Serial Number",
+                url: "serial/{lettercase}",
+                defaults: new { controller = "Home", action = "Serial", lettercase="upper" }
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }

@@ -26,5 +26,17 @@ namespace AspNetMVCEssential.Controllers
 
             return View();
         }
+
+        public ActionResult Serial(string lettercase)
+        {
+            var serial = "ASP.NET mvc5";
+            if (lettercase == "lower")
+            {
+                serial = serial.ToLower();
+            }
+            //return Content(serial);
+            //return Json(new {name = "serial", value = serial}, JsonRequestBehavior.AllowGet);
+            return RedirectToAction("Index");
+        }
     }
 }
