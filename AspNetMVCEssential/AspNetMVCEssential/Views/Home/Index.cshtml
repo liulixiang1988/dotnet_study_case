@@ -14,12 +14,12 @@
         <p>
             注册个账户
         </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">注册</a></p>
+        <p>@Html.ActionLink("注册", "Register", "Account", null, htmlAttributes:new {@class="btn btn-default"})</p>
     </div>
     <div class="col-md-4">
         <h2>登录</h2>
         <p>登录账户</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">登录</a></p>
+        <p>@Html.ActionLink("登录", "Login", "Account", null, htmlAttributes: new { @class = "btn btn-default" })</p>
     </div>
 </div>
 

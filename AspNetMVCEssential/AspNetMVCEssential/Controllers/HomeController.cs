@@ -42,6 +42,7 @@ namespace AspNetMVCEssential.Controllers
             if (lettercase == "lower")
             {
                 serial = serial.ToLower();
+                return Content(serial);
             }
             //return Content(serial);
             //return Json(new {name = "serial", value = serial}, JsonRequestBehavior.AllowGet);
