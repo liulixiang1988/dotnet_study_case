@@ -10,18 +10,16 @@
 
 <div class="row">
     <div class="col-md-4">
-        <h2>Getting started</h2>
+        <h2>注册</h2>
         <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
+            注册个账户
         </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">注册</a></p>
     </div>
     <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+        <h2>登录</h2>
+        <p>登录账户</p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">登录</a></p>
     </div>
 </div>
 
@@ -29,29 +27,30 @@
 {
     <script> var testing = true;</script>
 }
-@*注释*@
+@*注释
 
-你在用 @Request.Browser.Browser, 发送邮件给support@qq.com, 转义@@qq
+    你在用 @Request.Browser.Browser, 发送邮件给support@qq.com, 转义@@qq
 
-@{
-    var amounts = new List<Decimal> {100, 25.00m, 30.0m, -40}; 
-}
-
-<ul>
-    @foreach (decimal amount in amounts)
-    {
-        <li>@formatAmount(amount)</li>
-        <text>普通文本</text>
-        @:普通文本
+    @{
+        var amounts = new List<Decimal> {100, 25.00m, 30.0m, -40};
     }
-</ul>
 
-@helper formatAmount(decimal amount)
-{
-    var color = "green";
-    if (amount < 0)
+    <ul>
+        @foreach (decimal amount in amounts)
+        {
+            <li>@formatAmount(amount)</li>
+            <text>普通文本</text>
+            @:普通文本
+        }
+    </ul>
+
+    @helper formatAmount(decimal amount)
     {
-        color = "red";
+        var color = "green";
+        if (amount < 0)
+        {
+            color = "red";
+        }
+        <span style="color:@color">@String.Format("{0:c}", amount)</span>
     }
-    <span style="color:@color">@String.Format("{0:c}", amount)</span>
-}
+*@
