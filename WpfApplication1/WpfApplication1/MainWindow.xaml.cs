@@ -24,5 +24,10 @@ namespace WpfApplication1
         {
             InitializeComponent();
         }
+
+        private void btnAnswer_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
