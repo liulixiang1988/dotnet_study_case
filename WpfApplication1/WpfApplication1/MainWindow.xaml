@@ -3,6 +3,39 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="350" Width="525">
     <Grid x:Name="Grid1">
-        
+        <Grid.Background>
+            <LinearGradientBrush>
+                <LinearGradientBrush.GradientStops>
+                    <GradientStop Offset="0.00" Color="Red"/>
+                    <GradientStop Offset="0.50" Color="Indigo"/>
+                    <GradientStop Offset="1.00" Color="Violet"/>
+                </LinearGradientBrush.GradientStops>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBox x:Name="txtQuestion" 
+                 HorizontalAlignment="Center" 
+                 VerticalAlignment="Center" 
+                 FontFamily="Microsoft YaHei" 
+                 FontSize="14" 
+                 Foreground="Black"
+                 Grid.Row="0">
+            【在这里输入你的问题】
+        </TextBox>
+        <Button x:Name="btnAnswer"
+                Grid.Row="1">
+            <Button.Foreground>
+                <x:Static Member="SystemColors.ActiveCaptionBrush"></x:Static>
+            </Button.Foreground>
+            【提问】
+        </Button>
+        <TextBox x:Name="txtAnswer"
+                 Grid.Row="2">
+            【点击提问按钮后，这里会显示答案】
+        </TextBox>
     </Grid>
 </Window>
