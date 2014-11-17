@@ -31,7 +31,7 @@
             <Button.Foreground>
                 <x:Static Member="SystemColors.ActiveCaptionBrush"></x:Static>
             </Button.Foreground>
-            【提问】
+            <Rectangle Fill="Blue" Height="10" Width="100"></Rectangle>
         </Button>
         <TextBox x:Name="txtAnswer"
                  Grid.Row="2">
