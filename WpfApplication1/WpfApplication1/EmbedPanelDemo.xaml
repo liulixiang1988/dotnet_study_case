@@ -1,0 +1,12 @@
+﻿<Window x:Class="WpfApplication1.EmbedPanelDemo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="EmbedPanelDemo" Height="300" Width="300">
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Margin="10, 2, 10, 2">确认</Button>
+            <Button Margin="10, 2, 10, 2">取消</Button>
+        </StackPanel>
+        <TextBox Margin="10"></TextBox>
+    </DockPanel>
+</Window>

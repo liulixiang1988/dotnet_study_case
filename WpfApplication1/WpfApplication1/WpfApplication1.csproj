@@ -63,6 +63,9 @@
     <Compile Include="DockPanelDemo.xaml.cs">
       <DependentUpon>DockPanelDemo.xaml</DependentUpon>
     </Compile>
+    <Compile Include="EmbedPanelDemo.xaml.cs">
+      <DependentUpon>EmbedPanelDemo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RibbonDemo.xaml.cs">
       <DependentUpon>RibbonDemo.xaml</DependentUpon>
     </Compile>
@@ -73,6 +76,10 @@
       <DependentUpon>WrapPanelDemo.xaml</DependentUpon>
     </Compile>
     <Page Include="DockPanelDemo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EmbedPanelDemo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
