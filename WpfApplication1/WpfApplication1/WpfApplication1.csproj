@@ -69,6 +69,12 @@
     <Compile Include="GridDemo.xaml.cs">
       <DependentUpon>GridDemo.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GridDemo2.xaml.cs">
+      <DependentUpon>GridDemo2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InkCanvasDemo.xaml.cs">
+      <DependentUpon>InkCanvasDemo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RibbonDemo.xaml.cs">
       <DependentUpon>RibbonDemo.xaml</DependentUpon>
     </Compile>
@@ -87,6 +93,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GridDemo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GridDemo2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InkCanvasDemo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
