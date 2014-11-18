@@ -1,0 +1,12 @@
+﻿<Window x:Class="WpfApplication1.DockPanelDemo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="DockPanelDemo" Height="300" Width="300">
+    <DockPanel>
+        <Button DockPanel.Dock="Top">Top Button</Button>
+        <Button DockPanel.Dock="Bottom">Buttom Button</Button>
+        <Button DockPanel.Dock="Left">Left Buttom</Button>
+        <Button DockPanel.Dock="Right">Right Buttom</Button>
+        <Button>Remaining Space</Button>
+    </DockPanel>
+</Window>
