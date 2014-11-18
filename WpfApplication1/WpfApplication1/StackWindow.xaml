@@ -1,0 +1,11 @@
+﻿<Window x:Class="WpfApplication1.StackWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="StackWindow" Height="300" Width="300">
+    <StackPanel>
+        <Label>Stack Panel Demo</Label>
+        <Button>按钮1</Button>
+        <Button>按钮2</Button>
+        <Button>按钮3</Button>
+    </StackPanel>
+</Window>
