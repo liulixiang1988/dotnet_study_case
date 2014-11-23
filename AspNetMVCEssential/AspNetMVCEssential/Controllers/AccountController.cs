@@ -5,8 +5,10 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using AspNetMVCEssential.Services;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using AspNetMVCEssential.Models;
 
@@ -82,17 +84,10 @@ namespace AspNetMVCEssential.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    var db = new ApplicationDbContext();
-                    var checkoutAccount = new CheckoutAccount
-                    {
-                        AccountNumber = "00000123",
-                        FirstName = model.FirstName,
-                        LastName = model.LastName,
-                        Balance = 0,
-                        ApplicationUserId = user.Id
-                    };
-                    db.CheckoutAccounts.Add(checkoutAccount);
-                    db.SaveChanges();
+                    var service = new CheckingAccountService(HttpContext.GetOwinContext()
+                        .Get<ApplicationDbContext>());
+                    service.CreateCheckingAccount(model.FirstName, model.LastName,
+                        user.Id, 0);
                     await SignInAsync(user, isPersistent: false);
                     return RedirectToAction("Index", "Home");
                 }
@@ -283,6 +278,10 @@ namespace AspNetMVCEssential.Controllers
                     result = await UserManager.AddLoginAsync(user.Id, info.Login);
                     if (result.Succeeded)
                     {
+                        var service = new CheckingAccountService(HttpContext.GetOwinContext()
+    .Get<ApplicationDbContext>());
+                        service.CreateCheckingAccount("Facebook", model.UserName,
+                            user.Id, 0);
                         await SignInAsync(user, isPersistent: false);
                         return RedirectToLocal(returnUrl);
                     }
