@@ -4,11 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using AspNetMVCEssential.Models;
+using Microsoft.AspNet.Identity;
 
 namespace AspNetMVCEssential.Controllers
 {
+    [Authorize]
     public class CheckingAccountController : Controller
     {
+        private ApplicationDbContext db = new ApplicationDbContext();
         //
         // GET: /CheckingAccount/
         public ActionResult Index()
@@ -20,16 +23,21 @@ namespace AspNetMVCEssential.Controllers
         // GET: /CheckingAccount/Details/
         public ActionResult Details()
         {
-            var checkingAccount = new CheckoutAccount
-            {
-                AccountNumber = "00000123456",
-                FirstName = "刘",
-                LastName = "理想",
-                Balance = 500
-            };
+            var userId = User.Identity.GetUserId();
+            var checkingAccount = db.CheckoutAccounts.First(c => c.ApplicationUserId == userId);
             return View(checkingAccount);
         }
 
+        public ActionResult DetailsForAdmin(int id)
+        {
+            var checkingAccount = db.CheckoutAccounts.First(c => c.Id == id);
+            return View(checkingAccount);
+        }
+
+        public ActionResult List()
+        {
+            return View(db.CheckoutAccounts.ToList());
+        }
         //
         // GET: /CheckingAccount/Create
         public ActionResult Create()

@@ -29,6 +29,7 @@ namespace AspNetMVCEssential.Models
         public string Name { get { return FirstName + " " + LastName; } }
 
         [Required]
+        [Display(Name = "余额")]
         [DataType(DataType.Currency)]
         public decimal Balance { get; set; }
 

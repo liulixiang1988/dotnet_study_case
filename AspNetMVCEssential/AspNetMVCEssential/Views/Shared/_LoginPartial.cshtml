@@ -1,13 +1,17 @@
-﻿@using Microsoft.AspNet.Identity
+﻿@using System.Security.Claims
+@using Microsoft.AspNet.Identity
+
 @if (Request.IsAuthenticated)
 {
+    var identity = (ClaimsIdentity) User.Identity;
+    var name = identity.FindFirstValue(ClaimTypes.GivenName) ?? identity.GetUserName();
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
     @Html.AntiForgeryToken()
 
     <ul class="nav navbar-nav navbar-right">
         <li>
-            @Html.ActionLink("你好 " + User.Identity.GetUserName() + "!", "Manage", "Account", routeValues: null, htmlAttributes: new { title = "管理" })
+            @Html.ActionLink("你好 " + name + "!", "Manage", "Account", routeValues: null, htmlAttributes: new { title = "管理" })
         </li>
         <li><a href="javascript:document.getElementById('logoutForm').submit()">注销</a></li>
     </ul>
