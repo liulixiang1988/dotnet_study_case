@@ -28,15 +28,4 @@ namespace AspNetMVCEssential.Models
 
         public DbSet<Transaction> Transactions { get; set; }
     }
-
-    public class FakeDbContext : IdentityDbContext<ApplicationUser>
-    {
-        public FakeDbContext():base("DefaultConnection")
-        {
-            
-        }
-        public DbSet<CheckoutAccount> CheckoutAccounts { get; set; }
-
-        public DbSet<Transaction> Transactions { get; set; }
-    }
 }

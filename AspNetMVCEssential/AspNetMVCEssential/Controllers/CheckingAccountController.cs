@@ -28,10 +28,11 @@ namespace AspNetMVCEssential.Controllers
             return View(checkingAccount);
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult DetailsForAdmin(int id)
         {
             var checkingAccount = db.CheckoutAccounts.First(c => c.Id == id);
-            return View(checkingAccount);
+            return View("Details", checkingAccount);
         }
 
         public ActionResult List()
