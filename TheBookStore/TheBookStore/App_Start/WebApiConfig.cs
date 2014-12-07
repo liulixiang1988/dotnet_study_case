@@ -25,6 +25,7 @@ namespace TheBookStore
             config.MessageHandlers.Add(new BasicAuthenticationHandler(new CustomPrincipalProvider()));
 
             config.Filters.Add(new AuthorizeAttribute());
+            config.Formatters.Add(new BooksCsvFormatter());
         }
     }
 }

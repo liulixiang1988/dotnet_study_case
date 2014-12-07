@@ -124,8 +124,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\BasicAuthenticationHandler.cs" />
+    <Compile Include="Infrastructure\BooksCsvFormatter.cs" />
     <Compile Include="Infrastructure\CustomPrincipalProvider.cs" />
     <Compile Include="Infrastructure\EnforceHttpsAttribute.cs" />
+    <Compile Include="Infrastructure\Extensions.cs" />
     <Compile Include="Models\Author.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\Credentials.cs" />
