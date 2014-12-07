@@ -10,10 +10,10 @@ namespace TheBookStore.Contracts
     {
         void Commit();
 
-        IBookRepository Books { get; set; }
+        IBookRepository Books { get; }
 
-        IAuthorRepository Authors { get; set; }
+        IAuthorRepository Authors { get; }
 
-        IReviewRepository Reviews { get; set; }
+        IReviewRepository Reviews { get; }
     }
 }
