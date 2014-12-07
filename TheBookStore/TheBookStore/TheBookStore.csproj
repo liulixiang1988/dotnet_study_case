@@ -125,6 +125,7 @@
     </Compile>
     <Compile Include="Infrastructure\BasicAuthenticationHandler.cs" />
     <Compile Include="Infrastructure\BooksCsvFormatter.cs" />
+    <Compile Include="Infrastructure\CheckNulls.cs" />
     <Compile Include="Infrastructure\CustomPrincipalProvider.cs" />
     <Compile Include="Infrastructure\EnforceHttpsAttribute.cs" />
     <Compile Include="Infrastructure\Extensions.cs" />
