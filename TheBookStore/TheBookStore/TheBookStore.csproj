@@ -15,7 +15,7 @@
     <AssemblyName>TheBookStore</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort />
+    <IISExpressSSLPort>44300</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -125,6 +125,7 @@
     </Compile>
     <Compile Include="Infrastructure\BasicAuthenticationHandler.cs" />
     <Compile Include="Infrastructure\CustomPrincipalProvider.cs" />
+    <Compile Include="Infrastructure\EnforceHttpsAttribute.cs" />
     <Compile Include="Models\Author.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\Credentials.cs" />
