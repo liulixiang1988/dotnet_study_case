@@ -130,6 +130,7 @@
     <Compile Include="Infrastructure\EnforceHttpsAttribute.cs" />
     <Compile Include="Infrastructure\Extensions.cs" />
     <Compile Include="Infrastructure\RateLimitHandler.cs" />
+    <Compile Include="Infrastructure\ServiceResolver.cs" />
     <Compile Include="Models\Author.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\Credentials.cs" />

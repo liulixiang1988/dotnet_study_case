@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TheBookStore.Contracts
 {
-    interface IUnitOfWork
+    public interface IUnitOfWork
     {
         void Commit();
 
