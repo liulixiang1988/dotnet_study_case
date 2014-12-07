@@ -38,6 +38,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper.3.3.0\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper.Net4">
+      <HintPath>..\packages\AutoMapper.3.3.0\lib\net40\AutoMapper.Net4.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Web.DynamicData" />
@@ -97,9 +103,22 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\MapsConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Contracts\IAuthorRepository.cs" />
+    <Compile Include="Contracts\IBookRepository.cs" />
+    <Compile Include="Contracts\IReviewRepository.cs" />
+    <Compile Include="Contracts\IUnitOfWork.cs" />
+    <Compile Include="Controllers\AuthorsController.cs" />
+    <Compile Include="Controllers\BooksController.cs" />
+    <Compile Include="Controllers\ReviewsController.cs" />
+    <Compile Include="DataStores\SampleDataStore.cs" />
+    <Compile Include="DataTransferObjects\AuthorBooksDto.cs" />
+    <Compile Include="DataTransferObjects\AuthorDto.cs" />
+    <Compile Include="DataTransferObjects\BookAuthorsDto.cs" />
+    <Compile Include="DataTransferObjects\BookDto.cs" />
+    <Compile Include="DataTransferObjects\ReviewDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -107,6 +126,9 @@
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\Review.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\AuthorSampleRepository.cs" />
+    <Compile Include="Repositories\BookSampleRepository.cs" />
+    <Compile Include="Repositories\ReviewSampleRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -121,8 +143,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
-    <Folder Include="DataStores\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -149,6 +169,7 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <Import Project="..\packages\AutoMapper.3.3.0\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.3.0\tools\AutoMapper.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

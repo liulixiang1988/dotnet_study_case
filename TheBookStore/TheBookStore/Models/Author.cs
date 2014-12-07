@@ -11,7 +11,7 @@ namespace TheBookStore.Models
 
         public string Name { get; set; }
 
-        public string SurName { get; set; }
+        public string Surname { get; set; }
 
         public virtual ICollection<Book> Books { get; set; }
     }

@@ -16,5 +16,7 @@ namespace TheBookStore.Models
         public string Feedback { get; set; }
 
         public virtual Book Book { get; set; }
+
+        public int BookId { get; set; }
     }
 }
