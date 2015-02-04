@@ -4,7 +4,7 @@ using WebApi2Book.Web.Api.Models;
 
 namespace WebApi2Book.Web.Api.Controllers.V2
 {
-    [RoutePrefix("api/{apiVersion:apiVersionConstraint(v2)/tasks")]
+    [RoutePrefix("api/{apiVersion:apiVersionConstraint(v2)}/tasks")]
     public class TasksController : ApiController
     {
         [Route("", Name = "AddTaskRouteV2")]
