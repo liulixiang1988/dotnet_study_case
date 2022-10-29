@@ -16,3 +16,17 @@ switch (value)
         Console.Write("Value is zero");
         break;
 }
+
+switch (Environment.OSVersion)
+{
+    
+    case {Platform: PlatformID.MacOSX}:
+        Console.WriteLine("MacOSX");
+        break;
+    case {Platform: PlatformID.Unix}:
+        Console.WriteLine("Unix");
+        break;
+    default:
+        Console.WriteLine("Windows");
+        break;
+}
