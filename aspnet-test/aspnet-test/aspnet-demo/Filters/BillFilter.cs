@@ -3,9 +3,8 @@ using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace aspnet_demo.Filters;
 
-public class BillFilter : IActionFilter, IAsyncActionFilter, IAlwaysRunResultFilter, IAsyncAlwaysRunResultFilter,
-    IResourceFilter, IAsyncResourceFilter
-
+public class BillFilter : IActionFilter, IAsyncActionFilter, IAlwaysRunResultFilter, IAsyncAlwaysRunResultFilter
+    , IResourceFilter, IAsyncResourceFilter
 {
     private readonly ILogger<BillFilter> _logger;
 
@@ -34,8 +33,18 @@ public class BillFilter : IActionFilter, IAsyncActionFilter, IAlwaysRunResultFil
     public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
     {
         if (Configs.LocalValue.Value == null || !Configs.LocalValue.Value.StartsWith("From"))
-            Configs.LocalValue.Value = "From OnActionExecutionAsync";
-        _logger.LogInformation("OnActionExecutionAsync start, {} {context}", GetHttpMethod(context.RouteData), context);
+        {
+            context.HttpContext.Request.Headers.TryGetValue("x-local", out var local);
+
+            Configs.LocalValue.Value = local.Count > 0
+                ? local.ToString()
+                : "From OnActionExecutionAsync" + System.DateTime.Now.Ticks;
+            context.HttpContext.Request.Headers["x-local"] = Configs.LocalValue.Value;
+            context.HttpContext.Response.Headers["x-local"] = Configs.LocalValue.Value;
+        }
+
+        _logger.LogInformation("OnActionExecutionAsync start, {} {} {context}", GetHttpMethod(context.RouteData),
+            Configs.LocalValue.Value, context);
         try
         {
             await next();
@@ -63,7 +72,10 @@ public class BillFilter : IActionFilter, IAsyncActionFilter, IAlwaysRunResultFil
 
     public async Task OnResultExecutionAsync(ResultExecutingContext context, ResultExecutionDelegate next)
     {
-        _logger.LogInformation("OnResultExecutionAsync {}, {context}", GetHttpMethod(context.RouteData), context);
+        _logger.LogInformation("OnResultExecutionAsync {}, {}, {context}", GetHttpMethod(context.RouteData),
+            Configs.LocalValue.Value, context);
+        _logger.LogInformation("OnResultExecutionAsync, {}",
+            context.HttpContext.Features.Get<FeatureDemo>()?.FeatureName);
         try
         {
             await next();
@@ -91,6 +103,7 @@ public class BillFilter : IActionFilter, IAsyncActionFilter, IAlwaysRunResultFil
 
     public async Task OnResourceExecutionAsync(ResourceExecutingContext context, ResourceExecutionDelegate next)
     {
+        _logger.LogInformation("router:{}", context.RouteData.Values);
         if (Configs.LocalValue.Value == null || !Configs.LocalValue.Value.StartsWith("From"))
         {
             context.HttpContext.Request.Headers.TryGetValue("x-local", out var local);

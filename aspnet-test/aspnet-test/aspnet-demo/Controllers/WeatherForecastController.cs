@@ -21,6 +21,8 @@ public class WeatherForecastController : ControllerBase
     [HttpGet(Name = "GetWeatherForecast")]
     public IEnumerable<WeatherForecast> Get()
     {
+        Configs.LocalValue.Value = "From controller";
+        HttpContext.Features.Set(new FeatureDemo("hello"));
         _logger.LogInformation("[controller] {}", Configs.LocalValue.Value);
         throw new Exception("test");
         return Enumerable.Range(1, 5).Select(index => new WeatherForecast
