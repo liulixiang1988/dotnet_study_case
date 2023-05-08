@@ -23,5 +23,6 @@ using (Py.GIL())
     Console.WriteLine(b.dtype);
 
     Console.WriteLine(a * b);
-    Console.ReadKey();
 }
+Console.WriteLine("exit");
+PythonEngine.Shutdown();
