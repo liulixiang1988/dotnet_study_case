@@ -1,0 +1,14 @@
+<Project>
+	<PropertyGroup>
+		<!-- Custom Properties -->
+		<CompanyName>Lixiang</CompanyName>
+		<ProjectName>CsharpAdvance</ProjectName>
+		<!-- Redefine MSBuild Properties -->
+		<Company>$(CompanyName)</Company>
+		<RootNamespace>$(Company).$(ProjectName).$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Update="Dapper" Version="2.0.123" />
+		<!-- Test Libraries -->
+	</ItemGroup>
+</Project>
