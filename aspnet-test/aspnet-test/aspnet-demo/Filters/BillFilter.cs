@@ -103,7 +103,7 @@ public class BillFilter : IActionFilter, IAsyncActionFilter, IAlwaysRunResultFil
 
     public async Task OnResourceExecutionAsync(ResourceExecutingContext context, ResourceExecutionDelegate next)
     {
-        _logger.LogInformation("router:{}", context.RouteData.Values);
+        _logger.LogInformation("router:{}, path: {}", context.RouteData.Values, context.HttpContext.Request.Path);
         if (Configs.LocalValue.Value == null || !Configs.LocalValue.Value.StartsWith("From"))
         {
             context.HttpContext.Request.Headers.TryGetValue("x-local", out var local);
