@@ -9,6 +9,7 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Update="Dapper" Version="2.0.123" />
+		<PackageReference Update="pythonnet" Version="3.1.0-preview2023-04-03" />
 		<!-- Test Libraries -->
 	</ItemGroup>
 </Project>
