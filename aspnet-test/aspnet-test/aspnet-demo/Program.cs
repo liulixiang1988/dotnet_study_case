@@ -18,10 +18,19 @@ if (app.Environment.IsDevelopment())
     //app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+// app.UseHttpsRedirection();
 app.UseExceptionHandler("/error");
 app.UseAuthorization();
 
 app.MapControllers();
 
+var lifetime = app.Services.GetRequiredService<IHostApplicationLifetime>();
+lifetime.ApplicationStarted.Register(() =>
+{
+    Console.WriteLine("Started");
+});
+lifetime.ApplicationStopping.Register(() =>
+{
+    Console.WriteLine("Stopping");
+});
 app.Run();
