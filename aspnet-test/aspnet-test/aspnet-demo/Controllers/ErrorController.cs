@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace aspnet_demo.Controllers;
 
+[ApiExplorerSettings(IgnoreApi = true)]
 public class ErrorController: ControllerBase
 {
     private readonly ILogger<ErrorController> _logger;
