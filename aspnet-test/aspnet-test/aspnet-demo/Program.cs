@@ -16,6 +16,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddOpenTelemetry().WithMetrics(meterProviderBuilder => meterProviderBuilder
+    .AddAspNetCoreInstrumentation()
     .AddPrometheusExporter());
 var app = builder.Build();
 
