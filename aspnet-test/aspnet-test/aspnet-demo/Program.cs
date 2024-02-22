@@ -1,5 +1,6 @@
 using aspnet_demo.Filters;
 using aspnet_demo.Middlewares;
+using OpenTelemetry.Metrics;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +15,8 @@ builder.Services.AddControllers(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddOpenTelemetry().WithMetrics(meterProviderBuilder => meterProviderBuilder
+    .AddPrometheusExporter());
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -23,6 +26,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseOpenTelemetryPrometheusScrapingEndpoint(
+    // context => context.Request.Path == "/internal/metrics"
+    //            && context.Connection.LocalPort == 5067
+               );
 // app.UseHttpsRedirection();
 //app.UseExceptionHandler("/error");
 app.UseMiddleware<RouteDemoMiddleware>();
@@ -31,12 +38,6 @@ app.UseAuthorization();
 app.MapControllers();
 
 var lifetime = app.Services.GetRequiredService<IHostApplicationLifetime>();
-lifetime.ApplicationStarted.Register(() =>
-{
-    Console.WriteLine("Started");
-});
-lifetime.ApplicationStopping.Register(() =>
-{
-    Console.WriteLine("Stopping");
-});
+lifetime.ApplicationStarted.Register(() => { Console.WriteLine("Started"); });
+lifetime.ApplicationStopping.Register(() => { Console.WriteLine("Stopping"); });
 app.Run();
