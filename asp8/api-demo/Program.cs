@@ -1,3 +1,4 @@
+using api_demo.Extensions;
 using api_demo.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +9,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddGrpc().AddJsonTranscoding();
 builder.Services.AddControllers();
+builder.Services.LoadWorkers("api_demo.Workers");
 
 var app = builder.Build();
 
