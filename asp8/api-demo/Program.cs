@@ -1,4 +1,5 @@
 using api_demo.Extensions;
+using api_demo.Health;
 using api_demo.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +11,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddGrpc().AddJsonTranscoding();
 builder.Services.AddControllers();
 builder.Services.LoadWorkers("api_demo.Workers");
+builder.Services.AddHealthChecks()
+    .AddCheck<DatabaseHealthChecker>("database_health_check");
 
 var app = builder.Build();
 
@@ -41,6 +44,8 @@ app.MapGet("/weatherforecast", () =>
     })
     .WithName("GetWeatherForecast")
     .WithOpenApi();
+
+app.MapHealthChecks("/health");
 
 app.Run();
 
